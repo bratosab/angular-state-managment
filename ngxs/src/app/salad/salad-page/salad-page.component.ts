@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { StartOver } from '../salad.actions';
 import { SaladState } from '../salad.state';
-import { ConfirmOrder } from '../../shared/app.actions';
-
 
 @Component({
   selector: 'salad-page',
@@ -11,7 +9,6 @@ import { ConfirmOrder } from '../../shared/app.actions';
   styleUrls: ['./salad-page.component.scss']
 })
 export class SaladPageComponent implements OnInit {
-
   // @Select(SaladState) salad: any;
   // @Select(state => state.salad) salad: any;
   @Select() salad$;
@@ -23,8 +20,6 @@ export class SaladPageComponent implements OnInit {
   ngOnInit() {}
 
   startOver() {
-    this.store.dispatch( new StartOver() );
+    this.store.dispatch(new StartOver());
   }
-
-
 }

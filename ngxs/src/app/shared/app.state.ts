@@ -1,8 +1,7 @@
-import { State, Action, StateContext } from '@ngxs/store';
-import { SetUsername, ConfirmOrder, OrderFailed, OrderSuccess } from './app.actions';
-import { of } from 'rxjs/observable/of';
-import { tap, map, first, delay } from 'rxjs/operators';
+import { Action, State, StateContext } from '@ngxs/store';
+import { tap } from 'rxjs/operators';
 import { OrderService } from '../order.service';
+import { ConfirmOrder, OrderFailed, OrderSuccess, SetUsername } from './app.actions';
 
 export interface AppStateModel {
   username: string;
@@ -28,9 +27,7 @@ export class AppState {
   confirm({ dispatch, patchState }: StateContext<AppStateModel>) {
     patchState({ status: 'pending' });
 
-    return this.orderService.post().pipe(
-      tap(success => (success ? dispatch(OrderSuccess) : dispatch(OrderFailed)))
-    );
+    return this.orderService.post().pipe(tap(success => (success ? dispatch(OrderSuccess) : dispatch(OrderFailed))));
   }
 
   @Action(OrderSuccess)

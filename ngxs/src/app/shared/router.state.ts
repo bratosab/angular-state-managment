@@ -1,7 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Router, RouterStateSnapshot } from '@angular/router';
+import { Router } from '@angular/router';
 import { Action, State, StateContext } from '@ngxs/store';
-import { Actions, ofAction } from '@ngxs/store';
 
 export class Navigate {
   static readonly type = '[router] navigate';
@@ -20,7 +18,7 @@ export class RouterState {
     const path = action.payload;
     // context.setState(path);
     await this.router.navigate([path]);
-    context.setState( path );
+    context.setState(path);
   }
 }
 

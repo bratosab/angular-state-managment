@@ -11,7 +11,4 @@ cd ngxs && npm i
 cd ngrx && npm i
 ```
 
-
-
-
-
+Présentation Angular + NgRx : https://docs.google.com/presentation/d/1n-rlv8QkUTVvKUshHaN6XRWqkQbCYe9eDpJWN_FrkJE/edit?usp=sharing

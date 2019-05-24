@@ -1,7 +1,9 @@
 <ng-container *ngIf="(toppings$ | async) || [] as selected">
-  <div *ngFor="let choice of choices">
-    <button class="btn btn-outline-info" *ngIf="!selected.includes(choice)" (click)="add(choice)">
-      Add {{ choice }}
-    </button>
-  </div>
+  <ng-container *ngIf="choices$ | async as choices">
+    <div *ngFor="let choice of choices">
+      <button class="btn btn-outline-info" *ngIf="!selected.includes(choice)" (click)="add(choice)">
+        Add {{ choice.name }} : {{ choice.price }}$
+      </button>
+    </div>
+  </ng-container>
 </ng-container>

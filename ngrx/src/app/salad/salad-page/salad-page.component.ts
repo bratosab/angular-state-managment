@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { AppState } from '../../shared/app.reducer';
-import { StartOver } from '../salad.actions';
+import { StartOver, LoadChoices } from '../salad.actions';
 import { selectDressing } from '../salad.reducer';
 
 @Component({
@@ -24,6 +24,8 @@ export class SaladPageComponent implements OnInit {
     this.price$ = this.store.pipe(select(state => state.salad.price));
 
     this.dressing$ = this.store.pipe(select(selectDressing));
+
+    this.store.dispatch(new LoadChoices());
   }
 
   startOver() {

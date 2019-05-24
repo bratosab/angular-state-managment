@@ -13,7 +13,7 @@
 
       <ul>
         <li *ngFor="let topping of (salad$ | async)?.toppings">
-          <span class="badge badge-success">{{ topping }}</span>
+          <span class="badge badge-success">{{ topping.name }} : {{ topping.price }}$</span>
         </li>
       </ul>
     </div>

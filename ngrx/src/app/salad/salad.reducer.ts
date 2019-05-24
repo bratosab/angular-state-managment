@@ -4,27 +4,36 @@ import { SaladActionTypes, SaladActionUnion } from './salad.actions';
 export interface SaladState {
   dressing: string;
   price: number;
-  toppings: string[];
+  toppings: Array<{ name: string; price: number }>;
+  choices: Array<{ name: string; price: number }>;
 }
 
 const initialState: SaladState = {
   dressing: 'ranch',
   price: 9.99,
-  toppings: []
+  toppings: [],
+  choices: []
 };
 
-export function saladReducer(state: SaladState = initialState, action: SaladActionUnion) {
+export function saladReducer(state: SaladState = initialState, action: SaladActionUnion): SaladState {
   switch (action.type) {
     case SaladActionTypes.AddTopping:
       const toppings = [...state.toppings, action.payload];
       return {
         ...state,
         toppings,
-        price: state.price + 0.5
+        price: state.price + action.payload.price
       };
 
     case SaladActionTypes.StartOver:
       return { ...initialState };
+
+    case SaladActionTypes.AddChoices:
+      const c = [...state.choices, ...action.payload];
+      return {
+        ...state,
+        choices: c
+      };
 
     default:
       return state;

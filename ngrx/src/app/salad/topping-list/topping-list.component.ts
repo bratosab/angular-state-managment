@@ -9,7 +9,7 @@ import { AddTopping } from '../salad.actions';
   styleUrls: ['./topping-list.component.scss']
 })
 export class ToppingListComponent implements OnInit {
-  choices = ['Olives', 'Tomatoes', 'Croutons', 'Pickles', 'Shrimp', 'Pepitas', 'Carrots'];
+  choices$: Observable<string[]>;
 
   toppings$: Observable<string[]>;
   price$;
@@ -19,9 +19,10 @@ export class ToppingListComponent implements OnInit {
   ngOnInit() {
     this.toppings$ = this.store.pipe(select(state => state.salad.toppings));
     this.price$ = this.store.pipe(select(state => state.price));
+    this.choices$ = this.store.pipe(select(state => state.salad.choices));
   }
 
-  add(name) {
-    this.store.dispatch(new AddTopping(name));
+  add(choice) {
+    this.store.dispatch(new AddTopping(choice));
   }
 }

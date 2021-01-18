@@ -1,4 +1,4 @@
-# Communauté Web
+# Pillar Web
 
 Ici, nous avons deux applications Angular qui sont - du point de vue de l'utilisateur final - identiques en tous points. 
 
